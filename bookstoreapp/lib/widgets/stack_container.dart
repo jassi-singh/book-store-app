@@ -46,7 +46,7 @@ class StackContainer extends StatelessWidget {
                 Text(
                   "writer",
                   style: TextStyle(
-                    fontSize: 12.0,
+                    fontSize: 14.0,
                     color: Colors.grey[700],
                   ),
                 ),
