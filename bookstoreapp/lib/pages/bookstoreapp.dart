@@ -1,5 +1,6 @@
-import 'package:bookstoreapp/detail_page.dart';
+import 'package:bookstoreapp/pages/detail_page.dart';
 import 'package:flutter/material.dart';
+import 'package:bookstoreapp/pages/Profile_page.dart';
 
 class ReaderStop extends StatelessWidget {
   @override
@@ -97,24 +98,33 @@ class _MainPageState extends State<MainPage>
                   )
                 ],
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Icon(
-                    Icons.add_shopping_cart,
-                    size: 30,
-                    color: Colors.red,
-                  ),
-                  Text(
-                    "My Cart",
-                    style: TextStyle(
-                      fontSize: 12,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) {
+                      return ProfilePage();
+                    },
+                  ));
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.add_shopping_cart,
+                      size: 30,
                       color: Colors.red,
                     ),
-                  )
-                ],
-              )
+                    Text(
+                      "My Cart",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
