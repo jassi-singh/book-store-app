@@ -1,9 +1,9 @@
 import 'package:bookstoreapp/pages/detail_page.dart';
 import 'package:flutter/material.dart';
-import 'package:bookstoreapp/pages/cart.dart';
-import 'package:bookstoreapp/widgets/cartBooks.dart';
 import 'package:bookstoreapp/widgets/bottomBar.dart';
 import 'package:bookstoreapp/widgets/book_cards.dart';
+import 'package:bookstoreapp/widgets/categories.dart';
+import 'package:flutter/rendering.dart';
 
 class ReaderStop extends StatelessWidget {
   @override
@@ -169,113 +169,12 @@ class _MainPageState extends State<MainPage>
                       padding: EdgeInsets.zero,
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(24)),
-                          width: 100,
-                          child: Center(
-                            child: Text(
-                              "Classic",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(24)),
-                          width: 100,
-                          child: Center(
-                            child: Text(
-                              "Fantasy",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(24)),
-                          width: 100,
-                          child: Center(
-                            child: Text(
-                              "Fantasy",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(24)),
-                          width: 100,
-                          child: Center(
-                            child: Text(
-                              "Fantasy",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(24)),
-                          width: 100,
-                          child: Center(
-                            child: Text(
-                              "Fantasy",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(24)),
-                          width: 100,
-                          child: Center(
-                            child: Text(
-                              "Fantasy",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
+                        ListView.builder(
+                          itemBuilder: (context, index) => Categories(),
+                          itemCount: 4,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
                         ),
                       ],
                     ),
@@ -331,113 +230,12 @@ class _MainPageState extends State<MainPage>
                       padding: EdgeInsets.zero,
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(24)),
-                          width: 100,
-                          child: Center(
-                            child: Text(
-                              "Classic",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(24)),
-                          width: 100,
-                          child: Center(
-                            child: Text(
-                              "Fantasy",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(24)),
-                          width: 100,
-                          child: Center(
-                            child: Text(
-                              "Fantasy",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(24)),
-                          width: 100,
-                          child: Center(
-                            child: Text(
-                              "Fantasy",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(24)),
-                          width: 100,
-                          child: Center(
-                            child: Text(
-                              "Fantasy",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(24)),
-                          width: 100,
-                          child: Center(
-                            child: Text(
-                              "Fantasy",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
+                        ListView.builder(
+                          itemBuilder: (context, index) => Categories(),
+                          itemCount: 4,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
                         ),
                       ],
                     ),
