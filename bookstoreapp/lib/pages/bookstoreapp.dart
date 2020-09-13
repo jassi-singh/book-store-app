@@ -1,9 +1,9 @@
-import 'package:bookstoreapp/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bookstoreapp/widgets/bottomBar.dart';
 import 'package:bookstoreapp/widgets/book_cards.dart';
 import 'package:bookstoreapp/widgets/categories.dart';
 import 'package:flutter/rendering.dart';
+import 'package:bookstoreapp/models/book.dart';
 
 class ReaderStop extends StatelessWidget {
   @override
@@ -18,6 +18,54 @@ class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
 }
+
+var books = [
+    new Book(
+      name: "Harry Potter 2",
+      writer: "JK Rowling",
+      price: 390,
+      image: "https://universe.byu.edu/wp-content/uploads/2015/01/HP4cover.jpg",
+      favourite: true,
+      cart: true,
+      details: "this is magical"
+    ),
+    new Book(
+      name: "Harry Potter 5",
+      writer: "JK Rowling",
+      image: "https://universe.byu.edu/wp-content/uploads/2015/01/HP4cover.jpg",
+      price: 250,
+      favourite: true,
+      cart: false,
+      details: "this is magical"
+    ),
+    new Book(
+      name: "Harry Potter 6",
+      writer: "JK Rowling",
+      image: "https://media.harrypotterfanzone.com/deathly-hallows-us-childrens-edition.jpg",
+      price: 250,
+      favourite: true,
+      cart: true,
+      details: "this is magical"
+    ),
+    new Book(
+      name: "Harry Potter 4",
+      writer: "JK Rowling",
+      image: "https://universe.byu.edu/wp-content/uploads/2015/01/HP4cover.jpg",
+      price: 20,
+      favourite: false,
+      cart: false,
+      details: "this is magical"
+    ),
+    new Book(
+      name: "Harry Potter 1",
+      writer: "JK Rowling",
+      image: "https://res.cloudinary.com/bookbub/image/upload/t_ci_ar_6:9_scaled,f_auto,q_auto,dpr_2,c_scale,w_405/v1553632916/pro_pbid_13746.jpg",
+      price: 25,
+      favourite: true,
+      cart: false,
+      details: "this is magical"
+    )
+  ];
 
 class _MainPageState extends State<MainPage>
     with SingleTickerProviderStateMixin {
@@ -34,7 +82,6 @@ class _MainPageState extends State<MainPage>
     var deviceHeight = MediaQuery.of(context).size.height;
     var deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-
       bottomNavigationBar: BottomBar(),
       body: SingleChildScrollView(
         child: Column(
@@ -188,27 +235,17 @@ class _MainPageState extends State<MainPage>
               decoration: BoxDecoration(color: Colors.white),
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) {
-                          return DetailPage();
-                        },
-                      ));
-                    },
-                    child: Row(
+                children: <Widget>[Row(
                       children: <Widget>[
                         ListView.builder(
                           scrollDirection: Axis.horizontal,
                           physics: NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) => BookCards(),
+                          itemBuilder: (context, index) => BookCards(books: books[index],),
                           shrinkWrap: true,
-                          itemCount: 4,
+                          itemCount: books.length,
                         )
                       ],
                     ),
-                  ),
                 ],
               ),
             ),
@@ -250,26 +287,17 @@ class _MainPageState extends State<MainPage>
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) {
-                          return DetailPage();
-                        },
-                      ));
-                    },
-                    child: Row(
+                    Row(
                       children: <Widget>[
                         ListView.builder(
                           scrollDirection: Axis.horizontal,
                           physics: NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) => BookCards(),
+                          itemBuilder: (context, index) => BookCards(books: books[index],),
                           shrinkWrap: true,
-                          itemCount: 6,
+                          itemCount: books.length,
                         )
                       ],
                     ),
-                  ),
                 ],
               ),
             ),

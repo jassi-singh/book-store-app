@@ -1,8 +1,11 @@
 import 'dart:convert';
 import 'package:bookstoreapp/widgets/cartBooks.dart';
 import 'package:flutter/material.dart';
+import 'package:bookstoreapp/models/book.dart';
 
 class DetailPage extends StatefulWidget {
+  final Book books;
+  const DetailPage(this.books);
   @override
   _DetailPageState createState() => _DetailPageState();
   Widget build(BuildContext context) {
@@ -11,12 +14,11 @@ class DetailPage extends StatefulWidget {
       stream: bloc.getStream, // The stream we'll be listing to
       builder: (context, snapshot) {
         // snapshot contains the data of the bloc
-        return  Center(child: Text("All items in shop have been taken"));
+        return Center(child: Text("All items in shop have been taken"));
       },
     );
   }
 }
-
 
 class _DetailPageState extends State<DetailPage> {
   @override
@@ -33,13 +35,11 @@ class _DetailPageState extends State<DetailPage> {
               child: Hero(
                 tag: "img",
                 child: Container(
-                  child: Container(
-                    color: Colors.yellow,
-                    child: Center(
-                      child: FlutterLogo(
-                        size: 300,
-                        style: FlutterLogoStyle.horizontal,
-                      ),
+                  height: 300.0,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(widget.books.image),
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
@@ -54,14 +54,26 @@ class _DetailPageState extends State<DetailPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text("FLutter Live Coding Book",style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                ),),SizedBox(height: 8,),
-                Text("Jassi",style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,),
-                ),SizedBox(height: 8,),
+                Text(
+                  widget.books.name,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  widget.books.writer,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
                 Row(
                   children: <Widget>[
                     Icon(
@@ -98,29 +110,23 @@ class _DetailPageState extends State<DetailPage> {
                     )
                   ],
                 ),
-                SizedBox(height: 15,),
-                Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."),
-
-
+                SizedBox(
+                  height: 15,
+                ),
+                Text(widget.books.details),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-
                     RaisedButton(
-
                       onPressed: () {
                         //bloc.addToCart(shopList[i]);
                       },
-
-                      child: const Text('Add To Cart', style: TextStyle(fontSize: 20)),
-
-
+                      child: const Text('Add To Cart',
+                          style: TextStyle(fontSize: 20)),
                     ),
                   ],
                 ),
-
               ],
             ),
           )

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:bookstoreapp/widgets/book_cards.dart';
-import 'package:bookstoreapp/pages/detail_page.dart';
 import 'package:flutter/rendering.dart';
+import 'package:bookstoreapp/models/book.dart';
 import 'package:bookstoreapp/widgets/bottomBar.dart';
+import 'bookstoreapp.dart';
 
 class FavouriteBooks extends StatefulWidget {
   @override
@@ -10,31 +11,25 @@ class FavouriteBooks extends StatefulWidget {
 }
 
 class _FavouriteBooksState extends State<FavouriteBooks> {
+  List<Book> _isFavourite = books.where((i) => i.favourite).toList();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomBar(),
-      appBar: AppBar(
-        title: Text("Favoutrite Books"),
-      ),
+        bottomNavigationBar: BottomBar(),
+        appBar: AppBar(
+          title: Text("Favoutrite Books"),
+        ),
         body: GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, mainAxisSpacing: 2),
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) {
-                return DetailPage();
-              },
-            ));
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, mainAxisSpacing: 2),
+          itemCount: _isFavourite.length,
+          itemBuilder: (context, index) {
+            return Container(
+              child: BookCards(
+                books: _isFavourite[index],
+              ),
+            );
           },
-          child: Container(
-            child: BookCards(),
-          ),
-        );
-      },
-    ));
+        ));
   }
 }

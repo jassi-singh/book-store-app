@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:bookstoreapp/widgets/bottomBar.dart';
+import 'package:bookstoreapp/models/book.dart';
+import 'package:bookstoreapp/widgets/book_cards.dart';
+import 'bookstoreapp.dart';
+
+List<Book> _isCart = books.where((i) => i.cart).toList();
 
 class ShopItems extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -21,6 +26,17 @@ class ShopItems extends StatelessWidget {
 
 class ShopItemsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
-    return Center(child: Text("All items in shop have been taken"));
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, mainAxisSpacing: 2),
+      itemCount: _isCart.length,
+      itemBuilder: (context, index) {
+        return Container(
+          child: BookCards(
+            books: _isCart[index],
+          ),
+        );
+      },
+    );
   }
 }

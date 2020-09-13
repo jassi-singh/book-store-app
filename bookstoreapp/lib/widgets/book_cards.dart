@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:bookstoreapp/models/book.dart';
+import 'package:bookstoreapp/pages/detail_page.dart';
 
 class BookCards extends StatelessWidget {
-  const BookCards({
-    Key key,
-  }) : super(key: key);
+  final Book books;
+  const BookCards({Key key, @required this.books, onChanged, onSubmitted}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 190,
-      
-        child: Card(
-          elevation: 6,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 8),
+      child: Card(
+        elevation: 6,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) {
+                  return DetailPage(books);
+                },
+              ));
+            },
             child: Column(
               children: <Widget>[
                 Expanded(
@@ -24,13 +31,16 @@ class BookCards extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                          margin: EdgeInsets.only(
-                              top: 8, left: 16, bottom: 8, right: 4),
-                          width: 120,
-                          color: Colors.yellow,
-                          child: Center(
-                            child: FlutterLogo(size: 80),
-                          )),
+                        margin: EdgeInsets.only(
+                            top: 8, left: 16, bottom: 8, right: 4),
+                        width: 140,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(books.image),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
                       Icon(
                         Icons.favorite,
                         color: Colors.red,
@@ -45,13 +55,13 @@ class BookCards extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text("Flutter Sample Bokks",
+                      Text(books.name,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           )),
                       Text(
-                        "Jassi",
+                        books.writer,
                         style: TextStyle(
                           fontSize: 12,
                         ),
@@ -67,7 +77,7 @@ class BookCards extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          "\$ 300",
+                          "\$ ${books.price}",
                           style: TextStyle(
                             fontSize: 18,
                           ),
@@ -84,6 +94,7 @@ class BookCards extends StatelessWidget {
             ),
           ),
         ),
+      ),
     );
   }
 }
