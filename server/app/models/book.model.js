@@ -17,8 +17,11 @@ module.exports = (sequelize, Sequelize) => {
       },
       cart : {
         type: Sequelize.BOOLEAN
+      },
+      details : {
+        type: Sequelize.STRING
       }
     });
-  
+
     return Book;
   };
