@@ -19,7 +19,8 @@ exports.create = (req, res) => {
     price: req.body.price,
     image: req.body.image,
     favourite: req.body.favourite ? req.body.favourite : false,
-    cart: req.body.cart ? req.body.cart : false
+    cart: req.body.cart ? req.body.cart : false,
+    details:req.body.details
   };
 
   // Save Book in the database
