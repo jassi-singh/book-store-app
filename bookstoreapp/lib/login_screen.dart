@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:bookstoreapp/pages/bookstoreapp.dart';
+import 'package:crypto/crypto.dart';
+import 'dart:convert';
 
 const users = const {
   'a@b.c': '12345',
   'hunter@gmail.com': 'hunter',
+  'qw@er.ty': 'e2fc714c4727ee9395f324cd2e7f331f'
 };
 
 class LoginScreen extends StatelessWidget {
@@ -16,7 +19,7 @@ class LoginScreen extends StatelessWidget {
       if (!users.containsKey(data.name)) {
         return 'Username not exists';
       }
-      if (users[data.name] != data.password) {
+      if (users[data.name] != md5.convert(utf8.encode(data.password)).toString()) {
         return 'Password does not match';
       }
       return null;
