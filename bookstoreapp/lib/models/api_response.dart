@@ -3,5 +3,5 @@ class APIResponse<T> {
   bool error;
   String errormessage;
 
-  APIResponse({this.data, this.error, this.errormessage});
+  APIResponse({this.data, this.error=false, this.errormessage});
 }

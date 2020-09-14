@@ -19,10 +19,11 @@ class BooksService {
             favourite: item['favourite'],
             cart: item['cart'],
             price: item['price'],
+            image: item['image']
             // createdAt: item['createdAt'],
             // updatedAt: item['updatedAt'],
           );
-          print(book);
+          print(book.image);
           books.add(book);
         }
         return APIResponse<List<Book>>(data: books);
