@@ -19,14 +19,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Login Demo',
       theme: ThemeData(
-        primarySwatch: Colors.grey[250],
-        accentColor: Colors.orange,
-        cursorColor: Colors.orange,
+        primarySwatch: Colors.red,
+        accentColor: Colors.blue,
+        cursorColor: Colors.blue,
         textTheme: TextTheme(
           display2: TextStyle(
             fontFamily: 'OpenSans',
             fontSize: 45.0,
-            color: Colors.orange,
+            color: Colors.white,
           ),
           button: TextStyle(
             fontFamily: 'OpenSans',
