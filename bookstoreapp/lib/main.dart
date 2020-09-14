@@ -1,7 +1,17 @@
+import 'package:bookstoreapp/models/book.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
+import 'package:get_it/get_it.dart';
+import 'package:bookstoreapp/utils/books_service.dart';
 
-void main() => runApp(MyApp());
+void setupLocator() {
+  GetIt.I.registerLazySingleton(() => BooksService());
+}
+
+void main() {
+  setupLocator();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -29,7 +39,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
-

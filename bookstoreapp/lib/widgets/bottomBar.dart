@@ -32,7 +32,7 @@ class _BottomBarState extends State<BottomBar> {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) {
-                    return ReaderStop();
+                    return MainPage();
                   },
                 ));
               },

@@ -4,7 +4,7 @@ import 'package:bookstoreapp/models/book.dart';
 import 'package:bookstoreapp/widgets/book_cards.dart';
 import 'bookstoreapp.dart';
 
-List<Book> _isCart = books.where((i) => i.cart).toList();
+// List<Book> _isCart = books.where((i) => i.cart).toList();
 
 class ShopItems extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -29,12 +29,12 @@ class ShopItemsWidget extends StatelessWidget {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, mainAxisSpacing: 2),
-      itemCount: _isCart.length,
+      // itemCount: _isCart.length,
       itemBuilder: (context, index) {
         return Container(
-          child: BookCards(
-            books: _isCart[index],
-          ),
+          // child: BookCards(
+          //   books: _isCart[index],
+          // ),
         );
       },
     );

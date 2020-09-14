@@ -1,81 +1,77 @@
+import 'dart:convert';
+import 'package:bookstoreapp/models/api_response.dart';
 import 'package:flutter/material.dart';
 import 'package:bookstoreapp/widgets/bottomBar.dart';
 import 'package:bookstoreapp/widgets/book_cards.dart';
 import 'package:bookstoreapp/widgets/categories.dart';
 import 'package:flutter/rendering.dart';
 import 'package:bookstoreapp/models/book.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+// import 'package:bookstoreapp/utils/books_service.dart';
+import 'package:get_it/get_it.dart';
 
-class ReaderStop extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MainPage(),
-    ); //MaterialApp
+// class ReaderStop extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: MainPage(),
+//     ); //MaterialApp
+//   }
+// }
+
+Future<List<Book>> fetchBook() async {
+    print("Api hoja");
+    final response = await http.get('http://10.0.2.2:8080/api/books/');
+    print('hello world');
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      List<Book> books = (json.decode(response.body));
+      print(books[0].name);
+      return books;
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load Book');
+    }
   }
-}
 
 class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
 }
 
-var books = [
-    new Book(
-      name: "Harry Potter 2",
-      writer: "JK Rowling",
-      price: 390,
-      image: "https://universe.byu.edu/wp-content/uploads/2015/01/HP4cover.jpg",
-      favourite: true,
-      cart: true,
-      details: "this is magical"
-    ),
-    new Book(
-      name: "Harry Potter 5",
-      writer: "JK Rowling",
-      image: "https://universe.byu.edu/wp-content/uploads/2015/01/HP4cover.jpg",
-      price: 250,
-      favourite: true,
-      cart: false,
-      details: "this is magical"
-    ),
-    new Book(
-      name: "Harry Potter 6",
-      writer: "JK Rowling",
-      image: "https://media.harrypotterfanzone.com/deathly-hallows-us-childrens-edition.jpg",
-      price: 250,
-      favourite: true,
-      cart: true,
-      details: "this is magical"
-    ),
-    new Book(
-      name: "Harry Potter 4",
-      writer: "JK Rowling",
-      image: "https://universe.byu.edu/wp-content/uploads/2015/01/HP4cover.jpg",
-      price: 20,
-      favourite: false,
-      cart: false,
-      details: "this is magical"
-    ),
-    new Book(
-      name: "Harry Potter 1",
-      writer: "JK Rowling",
-      image: "https://res.cloudinary.com/bookbub/image/upload/t_ci_ar_6:9_scaled,f_auto,q_auto,dpr_2,c_scale,w_405/v1553632916/pro_pbid_13746.jpg",
-      price: 25,
-      favourite: true,
-      cart: false,
-      details: "this is magical"
-    )
-  ];
+// BooksService get service => GetIt.I<BooksService>();
 
-class _MainPageState extends State<MainPage>
-    with SingleTickerProviderStateMixin {
-  TabController _tabController;
+class _MainPageState extends State<MainPage> {
+
+  // APIResponse<List<Book>> _apiResponse;
+  // bool _isLoading = false;
+  Future<List<Book>> futureBook;
+  // with SingleTickerProviderStateMixin {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = TabController(vsync: this, length: 3);
+    // _fetchBooks();
+    print('check fetchbook');
+    futureBook = fetchBook();
   }
+
+  // _fetchBooks() async {
+  //   setState(() {
+  //     print('true');
+  //     _isLoading = true;
+  //   });
+
+  //   _apiResponse = await service.getBooksList();
+
+  //   setState(() {
+  //     print('false');
+  //     _isLoading = false;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -229,26 +225,41 @@ class _MainPageState extends State<MainPage>
                 ],
               ),
             ),
-            Container(
-              height: deviceHeight / 3,
-              padding: EdgeInsets.only(left: 16, bottom: 16),
-              decoration: BoxDecoration(color: Colors.white),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[Row(
-                      children: <Widget>[
-                        ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) => BookCards(books: books[index],),
-                          shrinkWrap: true,
-                          itemCount: books.length,
-                        )
-                      ],
-                    ),
-                ],
-              ),
-            ),
+            // Builder(
+            //   builder: (context) {
+            //     if (_isLoading) {
+            //       return CircularProgressIndicator();
+            //     }
+            //     if (_apiResponse.error) {
+            //       return Center(
+            //         child: Text(_apiResponse.errormessage),
+            //       );
+            //     }
+            //     return Container(
+            //       height: deviceHeight / 3,
+            //       padding: EdgeInsets.only(left: 16, bottom: 16),
+            //       decoration: BoxDecoration(color: Colors.white),
+            //       child: ListView(
+            //         scrollDirection: Axis.horizontal,
+            //         children: <Widget>[
+            //           Row(
+            //             children: <Widget>[
+            //               ListView.builder(
+            //                 scrollDirection: Axis.horizontal,
+            //                 physics: NeverScrollableScrollPhysics(),
+            //                 itemBuilder: (context, index) => BookCards(
+            //                   books: _apiResponse.data[index],
+            //                 ),
+            //                 shrinkWrap: true,
+            //                 itemCount: _apiResponse.data.length,
+            //               )
+            //             ],
+            //           ),
+            //         ],
+            //       ),
+            //     );
+            //   },
+            // ),
             Container(
               height: deviceHeight / 14,
               decoration: BoxDecoration(color: Colors.white),
@@ -287,17 +298,32 @@ class _MainPageState extends State<MainPage>
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) => BookCards(books: books[index],),
-                          shrinkWrap: true,
-                          itemCount: books.length,
-                        )
-                      ],
-                    ),
+                  Row(
+                    children: <Widget>[
+                      FutureBuilder<List<Book>>(
+                        future: futureBook,
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return CircularProgressIndicator();
+                          } else if (snapshot.hasError) {
+                            return Text("${snapshot.error}");
+                          }
+
+                          // By default, show a loading spinner.
+                          return Text(snapshot.data[0].name);
+                        },
+                      ),
+                      // ListView.builder(
+                      //   scrollDirection: Axis.horizontal,
+                      //   physics: NeverScrollableScrollPhysics(),
+                      //   itemBuilder: (context, index) => BookCards(
+                      //     books: books[index],
+                      //   ),
+                      //   shrinkWrap: true,
+                      //   itemCount: books.length,
+                      // )
+                    ],
+                  ),
                 ],
               ),
             ),
