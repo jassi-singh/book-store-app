@@ -3,19 +3,18 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:bookstoreapp/pages/selectedBooks.dart';
 import 'package:bookstoreapp/pages/checkOut.dart';
+import 'package:bookstoreapp/models/book.dart';
 
-//class CartPage extends StatefulWidget {
-//  @override
-//
-//}
 class CartPage extends StatefulWidget {
+  final List<Book> iscart;
+  const CartPage(this.iscart);
   @override
   _CartPageState createState() => _CartPageState();
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (BuildContext context) => ShopItems(),
+        '/': (BuildContext context) => ShopItems(iscart),
         '/checkout': (BuildContext context) => Checkout()
       },   
     );
@@ -43,7 +42,7 @@ class _CartPageState extends State<CartPage> {
       ),
       initialRoute: '/',
       routes: {
-        '/': (BuildContext context) => ShopItems(),
+        '/': (BuildContext context) => ShopItems(widget.iscart),
         '/checkout': (BuildContext context) => Checkout()
       },
     );

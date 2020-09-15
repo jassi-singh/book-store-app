@@ -6,12 +6,13 @@ import 'package:bookstoreapp/widgets/bottomBar.dart';
 import 'bookstoreapp.dart';
 
 class FavouriteBooks extends StatefulWidget {
+  final List<Book> isfavourite;
+  const FavouriteBooks(this.isfavourite);
   @override
   _FavouriteBooksState createState() => _FavouriteBooksState();
 }
 
 class _FavouriteBooksState extends State<FavouriteBooks> {
-  // List<Book> _isFavourite = books.where((i) => i.favourite).toList();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,13 +24,13 @@ class _FavouriteBooksState extends State<FavouriteBooks> {
         body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, mainAxisSpacing: 2),
-          // itemCount: _isFavourite.length,
+          itemCount: widget.isfavourite.length,
           itemBuilder: (context, index) {
             return Container(
-              // child: BookCards(
-              //   books: _isFavourite[index],
-              // ),
-            );
+                child: BookCards(
+                  books: widget.isfavourite[index],
+                ),
+                );
           },
         ));
   }

@@ -5,14 +5,41 @@ import 'package:bookstoreapp/pages/favourite.dart';
 import 'package:bookstoreapp/pages/profile_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:bookstoreapp/utils/books_service.dart';
+import 'package:get_it/get_it.dart';
+import 'package:bookstoreapp/models/api_response.dart';
+import 'package:bookstoreapp/models/book.dart';
 
 class BottomBar extends StatefulWidget {
   @override
   _BottomBarState createState() => _BottomBarState();
 }
 
+BooksService get service => GetIt.I<BooksService>();
+
 class _BottomBarState extends State<BottomBar> {
+  APIResponse<List<Book>> _apiResponse;
+  bool _isLoading = false;
+  // Future<List<Book>> futureBook;
   @override
+  void initState() {
+    super.initState();
+    _fetchBooks();
+    print('check fetchbook');
+  }
+
+  _fetchBooks() async {
+    setState(() {
+      print('true');
+      _isLoading = true;
+    });
+
+    _apiResponse = await service.getBooksList();
+    setState(() {
+      print('false');
+      _isLoading = false;
+    });
+  }
   Widget build(BuildContext context) {
     return Container(
       child: Container(
@@ -59,7 +86,8 @@ class _BottomBarState extends State<BottomBar> {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) {
-                    return FavouriteBooks();
+                    return FavouriteBooks(_apiResponse.data.where((i) => i.favourite).toList());
+
                   },
                 ));
               },
@@ -86,7 +114,8 @@ class _BottomBarState extends State<BottomBar> {
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) {
-                      return CartPage();
+                    return CartPage(_apiResponse.data.where((i) => i.cart).toList());
+
                     },
                   ));
                 },

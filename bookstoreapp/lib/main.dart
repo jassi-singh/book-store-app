@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import 'package:get_it/get_it.dart';
 import 'package:bookstoreapp/utils/books_service.dart';
+import 'package:bookstoreapp/utils/users_service.dart';
 
 void setupLocator() {
   GetIt.I.registerLazySingleton(() => BooksService());
+  GetIt.I.registerLazySingleton(() => UsersService());
 }
 
 void main() {
