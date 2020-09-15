@@ -40,7 +40,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlutterLogin(
 
-      title: 'ReaderStop',
+      title: "Reader'Stop",
       logo: 'assets/images/logo.png',
       onLogin: _authUser,
       onSignup: _authUser,

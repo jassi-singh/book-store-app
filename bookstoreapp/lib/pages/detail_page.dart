@@ -3,6 +3,7 @@ import 'package:bookstoreapp/widgets/cartBooks.dart';
 import 'package:flutter/material.dart';
 import 'package:bookstoreapp/models/book.dart';
 
+
 class DetailPage extends StatefulWidget {
   final Book books;
   const DetailPage(this.books);
@@ -123,7 +124,12 @@ class _DetailPageState extends State<DetailPage> {
                         //bloc.addToCart(shopList[i]);
                       },
                       child: const Text('Add To Cart',
-                          style: TextStyle(fontSize: 20)),
+                          style: TextStyle(fontSize: 20, color: Colors.black54)),
+                      color: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.lightBlue)
+                      ),
                     ),
                   ],
                 ),

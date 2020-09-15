@@ -18,6 +18,7 @@ class _FavouriteBooksState extends State<FavouriteBooks> {
         bottomNavigationBar: BottomBar(),
         appBar: AppBar(
           title: Text("Favoutrite Books"),
+          backgroundColor: Colors.blue,
         ),
         body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

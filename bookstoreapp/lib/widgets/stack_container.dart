@@ -37,7 +37,7 @@ class StackContainer extends StatelessWidget {
                 ),
                 SizedBox(height: 4.0),
                 Text(
-                  "Neecoder X",
+                  "Ayush Kumar",
                   style: TextStyle(
                     fontSize: 21.0,
                     fontWeight: FontWeight.bold,

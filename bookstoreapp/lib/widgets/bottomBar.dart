@@ -18,10 +18,10 @@ class _BottomBarState extends State<BottomBar> {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 24),
         decoration: BoxDecoration(
-            color: Color.fromRGBO(20, 30, 180, 0.5),
+            color: Color.fromRGBO(80, 152, 200, 0.9),
             border: Border(
                 top: BorderSide(
-              color: Color.fromRGBO(200, 150, 33, 0.8),
+              color: Colors.lightBlueAccent,
             ))),
         height: 72,
         child: Row(
@@ -43,11 +43,13 @@ class _BottomBarState extends State<BottomBar> {
                   Icon(
                     Icons.home,
                     size: 30,
+                    color: Color.fromRGBO(0, 0, 255, 0.5),
                   ),
                   Text(
                     "Home",
                     style: TextStyle(
                       fontSize: 12,
+                      color: Color.fromRGBO(0, 0, 255, 0.5),
                     ),
                   )
                 ],
@@ -68,13 +70,13 @@ class _BottomBarState extends State<BottomBar> {
                   Icon(
                     Icons.favorite,
                     size: 30,
-                    color: Colors.red,
+                    color: Color.fromRGBO(0, 0, 255, 0.5),
                   ),
                   Text(
                     "My Favorite",
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.red,
+                      color: Color.fromRGBO(0, 0, 255, 0.5),
                     ),
                   )
                 ],
@@ -95,13 +97,13 @@ class _BottomBarState extends State<BottomBar> {
                     Icon(
                       Icons.add_shopping_cart,
                       size: 30,
-                      color: Colors.red,
+                      color: Color.fromRGBO(0, 0, 255, 0.5),
                     ),
                     Text(
                       "My Cart",
                       style: TextStyle(
                         fontSize: 12,
-                        color: Colors.red,
+                        color: Color.fromRGBO(0, 0, 255, 0.5),
                       ),
                     )
                   ],
@@ -121,13 +123,13 @@ class _BottomBarState extends State<BottomBar> {
                   Icon(
                     Icons.person,
                     size: 30,
-                    color: Colors.red,
+                    color: Color.fromRGBO(0, 0, 255, 0.5),
                   ),
                   Text(
                     "Profile",
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.red,
+                      color: Color.fromRGBO(0, 0, 255, 0.5),
                     ),
                   )
                 ],

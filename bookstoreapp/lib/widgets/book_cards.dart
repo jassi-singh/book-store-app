@@ -84,6 +84,7 @@ class BookCards extends StatelessWidget {
                         ),
                         Icon(
                           Icons.shopping_basket,
+                          color: Colors.blue,
                           size: 30,
                         ),
                       ],

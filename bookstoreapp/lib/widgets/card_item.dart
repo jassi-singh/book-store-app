@@ -23,7 +23,7 @@ class CardItem extends StatelessWidget {
                 icon: Icon(
                   Icons.access_time,
                   size: 40.0,
-                  color: Colors.green,
+                  color: Colors.blue,
                 ),
               ),
               SizedBox(width: 24.0),

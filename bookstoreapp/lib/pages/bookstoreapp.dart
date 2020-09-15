@@ -92,14 +92,14 @@ class _MainPageState extends State<MainPage> {
                   Icon(
                     Icons.bookmark_border,
                     size: 40,
-                    color: Colors.red,
+                    color: Colors.blue,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 8),
                     child: Text(
-                      "ReaderStop",
+                      "Reader'Stop",
                       style: TextStyle(
-                          color: Colors.red,
+                          color: Colors.blue,
                           fontWeight: FontWeight.bold,
                           fontSize: 24),
                     ),
@@ -125,7 +125,7 @@ class _MainPageState extends State<MainPage> {
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: "Search",
-                    icon: Icon(Icons.search),
+                    icon: Icon(Icons.search, color: Colors.blue,),
                   ),
                 ),
               ),
@@ -147,7 +147,7 @@ class _MainPageState extends State<MainPage> {
                       children: <Widget>[
                         Icon(
                           Icons.whatshot,
-                          color: Colors.red,
+                          color: Colors.blue,
                           size: 48,
                         ),
                         SizedBox(
@@ -178,7 +178,7 @@ class _MainPageState extends State<MainPage> {
                         children: <Widget>[
                           Icon(
                             Icons.notifications_active,
-                            color: Colors.red,
+                            color: Colors.blue,
                             size: 48,
                           ),
                           SizedBox(

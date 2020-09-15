@@ -12,6 +12,7 @@ class ShopItems extends StatelessWidget {
       bottomNavigationBar: BottomBar(),
       appBar: AppBar(
         title: Text('Shopping Cart App'),
+        backgroundColor: Colors.blue,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.shopping_cart),
