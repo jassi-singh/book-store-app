@@ -14,6 +14,7 @@ class BooksService {
         final books = <Book>[];
         for (var item in jsonData) {
           final book = Book(
+            id: item['id'],
             name: item['name'],
             writer: item['writer'],
             details: item['details'],

@@ -20,17 +20,18 @@ BooksService get service => GetIt.I<BooksService>();
       appBar: AppBar(
         title: Text('Shopping Cart App'),
         backgroundColor: Colors.blue,
-        // actions: <Widget>[
-        //   IconButton(
-        //     icon: Icon(Icons.shopping_cart),
-        //     onPressed: () => Navigator.pushNamed(context, '/checkout'),
-        //   )
-        // ],
+        actions: <Widget>[
+          // IconButton(
+          //   icon: Icon(Icons.shopping_cart),
+          //   onPressed: () => Navigator.pushNamed(context, '/checkout'),
+          // )
+        ],
       ),
+      body: ShopItemsWidget(iscart),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           for(Book book in iscart){
-            final cart = BookManipulation(cart: false);
+            final cart = BookManipulation(cart: true);
           final result = await service.updateBook(book.id, cart);
           print(book.id);
           final text = result.error
@@ -38,16 +39,7 @@ BooksService get service => GetIt.I<BooksService>();
               : 'Add to cart';
               }
         },
-        child:GestureDetector(
-          onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) {
-                  return Checkout();
-                },
-              ));
-            },
-            child: Icon(Icons.arrow_forward_ios,color: Colors.white,),
-        ) ,
+        child: new Icon(Icons.arrow_forward_ios,color: Colors.white,),
         elevation: 4.0,
         backgroundColor: Colors.blue,
         
