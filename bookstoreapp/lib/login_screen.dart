@@ -1,4 +1,5 @@
 import 'package:bookstoreapp/models/user.dart';
+import 'package:bookstoreapp/utils/create_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:bookstoreapp/pages/bookstoreapp.dart';
@@ -42,21 +43,7 @@ class _LoginState extends State<Login> {
       if (!map.containsKey(data.name)) {
         return 'Username not exists';
       }
-      print(md5.convert(utf8.encode(data.password)).toString());
-      if (map[data.name] !=
-          md5.convert(utf8.encode(data.password)).toString()) {
-        return 'Password does not match';
-      }
-      return null;
-    });
-  }
-  Future<String> _signup(LoginData data) {
-    print('Name: ${data.name}, Password: ${data.password}');
-    return Future.delayed(loginTime).then((_) {
-      if (!map.containsKey(data.name)) {
-        return 'Username not exists';
-      }
-      print(md5.convert(utf8.encode(data.password)).toString());
+
       if (map[data.name] !=
           md5.convert(utf8.encode(data.password)).toString()) {
         return 'Password does not match';
@@ -65,8 +52,24 @@ class _LoginState extends State<Login> {
     });
   }
 
+  Future<String> _signup(LoginData data) {
+    print('Name: ${data.name}, Password: ${data.password}');
+    return Future.delayed(loginTime).then((_) async {
+      final user = UserCreate(
+          email: data.name,
+          password: md5.convert(utf8.encode(data.password)).toString());
+      print(user.password);
+      final result = await service.createUser(user);
+      print('something');
+      if (!result.error) {
+        return 'Sign up Succesfull';
+      } else {
+        return 'An error occured';
+      }
+    });
+  }
+
   Future<String> _recoverPassword(String name) {
-    print('Name: $name');
     return Future.delayed(loginTime).then((_) {
       if (!map.containsKey(name)) {
         return 'Username not exists';
@@ -76,16 +79,14 @@ class _LoginState extends State<Login> {
   }
 
   Widget build(BuildContext context) {
-    print('hello');
     for (var item in _apiResponse.data) {
       map[item.email] = item.password;
     }
-    print(map);
     return FlutterLogin(
       title: "Reader'Stop",
       logo: 'assets/images/logo.png',
       onLogin: _authUser,
-      onSignup: _authUser,
+      onSignup: _signup,
       onSubmitAnimationCompleted: () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => MainPage(),
