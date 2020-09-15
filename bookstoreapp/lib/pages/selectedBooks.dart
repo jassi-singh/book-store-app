@@ -16,13 +16,20 @@ class ShopItems extends StatelessWidget {
         title: Text('Shopping Cart App'),
         backgroundColor: Colors.blue,
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () => Navigator.pushNamed(context, '/checkout'),
-          )
+          // IconButton(
+          //   icon: Icon(Icons.shopping_cart),
+          //   onPressed: () => Navigator.pushNamed(context, '/checkout'),
+          // )
         ],
       ),
       body: ShopItemsWidget(iscart),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, '/checkout'),
+
+        child: new Icon(Icons.arrow_forward_ios,color: Colors.white,),
+        elevation: 4.0,
+        backgroundColor: Colors.blue,
+      ),
     );
   }
 }
