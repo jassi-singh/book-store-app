@@ -11,33 +11,7 @@ import 'dart:async';
 import 'package:bookstoreapp/utils/books_service.dart';
 import 'package:get_it/get_it.dart';
 
-// class ReaderStop extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: MainPage(),
-//     ); //MaterialApp
-//   }
-// }
 
-// Future<List<Book>> fetchBook() async {
-//     print("Api hoja");
-//     final response = await http.get('http://10.0.2.2:8080/api/books/');
-//     print('hello world');
-//     if (response.statusCode == 200) {
-//       // If the server did return a 200 OK response,
-//       // then parse the JSON.
-//
-//       List<Book> books =  (json.decode(response.body) as List);
-//       print('hello wod'+books.toString());
-//       print(books[0].name);
-//       return books;
-//     } else {
-//       // If the server did not return a 200 OK response,
-//       // then throw an exception.
-//       throw Exception('Failed to load Book');
-//     }
-//   }
 
 class MainPage extends StatefulWidget {
   @override
@@ -50,14 +24,14 @@ class _MainPageState extends State<MainPage> {
   APIResponse<List<Book>> _apiResponse;
   bool _isLoading = false;
   Future<List<Book>> futureBook;
-  // with SingleTickerProviderStateMixin {
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _fetchBooks();
     print('check fetchbook');
-    // futureBook = fetchBook();
+
   }
 
   _fetchBooks() async {

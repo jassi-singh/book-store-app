@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:bookstoreapp/pages/bookstoreapp.dart';
 
 class Checkout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('Checkout'), backgroundColor: Colors.blue,),
+
         body:  Center(child: Column(
           children: <Widget>[
            Row(
@@ -36,7 +38,21 @@ class Checkout extends StatelessWidget {
 
           ],
 
-        ),)
+        ),),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) {
+              return Checkout();
+            },
+          ));
+        },
+        child: new Icon(Icons.home,color: Colors.white,),
+        elevation: 4.0,
+        backgroundColor: Colors.blue,
+
+      ),
+
     );
   }
 }

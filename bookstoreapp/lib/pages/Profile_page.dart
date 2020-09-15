@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
               children: <Widget>[
 
                 RaisedButton(
-                  //elevation: 50,
+
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) {
@@ -38,12 +38,12 @@ class _ProfilePageState extends State<ProfilePage> {
                       },
                     ));
                   },
-                  //padding: EdgeInsets.all(30.0),
+
                   child: Column(
                     children: <Widget>[
                       Text('Log Out',
                           style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.bold),),
-                      //Icon(Icons.power_settings_new),
+
                     ],
                   ),
 

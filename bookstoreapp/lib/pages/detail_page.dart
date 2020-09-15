@@ -156,33 +156,6 @@ class _DetailPageState extends State<DetailPage> {
         elevation: 4.0,
         backgroundColor: Colors.blue,
       ),
-      // bottomNavigationBar: Padding(
-      //   padding: EdgeInsets.all(8.0),
-      //   child: RaisedButton(
-      //     onPressed: () {
-      //       //bloc.addToCart(shopList[i]);
-      //     },
-      //     child: const Text('Add To Cart',
-      //         style: TextStyle(fontSize: 20, color: Colors.black54)),
-      //     color: Colors.blue,
-      //     shape: RoundedRectangleBorder(
-      //         borderRadius: BorderRadius.circular(18.0),
-      //         side: BorderSide(color: Colors.lightBlue)
-      //     ),
-      //   ),
-      //
-      // ),
-      // bottomNavigationBar: BottomAppBar(
-      //   child: new Row(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: <Widget>[
-      //       Expanded(child: SizedBox(width: 18,)),
-      //       Expanded(child: IconButton(icon: Icon(Icons.show_chart)),),
-      //       Expanded(child: new Text('timpu')),
-      //
-      //     ],
-      //   ),
-      // ),
     );
   }
 }

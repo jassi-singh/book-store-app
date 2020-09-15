@@ -18,26 +18,28 @@ BooksService get service => GetIt.I<BooksService>();
     return Scaffold(
       bottomNavigationBar: BottomBar(),
       appBar: AppBar(
-        title: Text('Shopping Cart App'),
+        title: Text('Cart'),
         backgroundColor: Colors.blue,
         actions: <Widget>[
-          // IconButton(
-          //   icon: Icon(Icons.shopping_cart),
-          //   onPressed: () => Navigator.pushNamed(context, '/checkout'),
-          // )
+
         ],
       ),
       body: ShopItemsWidget(iscart),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           for(Book book in iscart){
-            final cart = BookManipulation(cart: true);
+            final cart = BookManipulation(cart: false);
           final result = await service.updateBook(book.id, cart);
           print(book.id);
           final text = result.error
               ? (result.errormessage) ?? 'An error Occured'
               : 'Add to cart';
               }
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) {
+              return Checkout();
+            },
+          ));
         },
         child: new Icon(Icons.arrow_forward_ios,color: Colors.white,),
         elevation: 4.0,

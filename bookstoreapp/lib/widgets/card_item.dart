@@ -33,13 +33,7 @@ class CardItem extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 4.0),
-                  // Text(
-                  //   "21 August 2020",
-                  //   style: TextStyle(
-                  //     color: Colors.grey[700],
-                  //     fontSize: 12.0,
-                  //   ),
-                  // ),
+
                 ],
               ),
             ],

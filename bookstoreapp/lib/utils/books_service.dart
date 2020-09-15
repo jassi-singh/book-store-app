@@ -22,8 +22,7 @@ class BooksService {
             cart: item['cart'],
             price: item['price'],
             image: item['image']
-            // createdAt: item['createdAt'],
-            // updatedAt: item['updatedAt'],
+
           );
           print(book.image);
           books.add(book);
