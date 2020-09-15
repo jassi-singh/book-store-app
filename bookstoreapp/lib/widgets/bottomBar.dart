@@ -70,13 +70,14 @@ class _BottomBarState extends State<BottomBar> {
                   Icon(
                     Icons.home,
                     size: 30,
-                    color: Color.fromRGBO(0, 0, 255, 0.5),
+                    color: Colors.grey[300],
+                    //color: Color.fromRGBO(0, 0, 255, 0.5),
                   ),
                   Text(
                     "Home",
                     style: TextStyle(
                       fontSize: 12,
-                      color: Color.fromRGBO(0, 0, 255, 0.5),
+                      color: Colors.grey[300],
                     ),
                   )
                 ],
@@ -98,13 +99,13 @@ class _BottomBarState extends State<BottomBar> {
                   Icon(
                     Icons.favorite,
                     size: 30,
-                    color: Color.fromRGBO(0, 0, 255, 0.5),
+                    color: Colors.grey[300],
                   ),
                   Text(
                     "My Favorite",
                     style: TextStyle(
                       fontSize: 12,
-                      color: Color.fromRGBO(0, 0, 255, 0.5),
+                      color: Colors.grey[300],
                     ),
                   )
                 ],
@@ -126,13 +127,13 @@ class _BottomBarState extends State<BottomBar> {
                     Icon(
                       Icons.add_shopping_cart,
                       size: 30,
-                      color: Color.fromRGBO(0, 0, 255, 0.5),
+                      color: Colors.grey[300],
                     ),
                     Text(
                       "My Cart",
                       style: TextStyle(
                         fontSize: 12,
-                        color: Color.fromRGBO(0, 0, 255, 0.5),
+                        color: Colors.grey[300],
                       ),
                     )
                   ],
@@ -152,13 +153,13 @@ class _BottomBarState extends State<BottomBar> {
                   Icon(
                     Icons.person,
                     size: 30,
-                    color: Color.fromRGBO(0, 0, 255, 0.5),
+                    color: Colors.grey[300],
                   ),
                   Text(
                     "Profile",
                     style: TextStyle(
                       fontSize: 12,
-                      color: Color.fromRGBO(0, 0, 255, 0.5),
+                      color: Colors.grey[300],
                     ),
                   )
                 ],
