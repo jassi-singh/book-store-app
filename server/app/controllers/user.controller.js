@@ -16,7 +16,7 @@ exports.create = (req, res) => {
   // Create a User
   const user = {
     email: req.body.email,
-    password: md5(salt+req.body.password)
+    password: md5(req.body.password)
   };
 
   // Save User in the database

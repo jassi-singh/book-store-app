@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           body1: TextStyle(fontFamily: 'NotoSans'),
         ),
       ),
-      home: LoginScreen(),
+      home: Login(),
     );
   }
 }
