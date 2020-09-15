@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
+
 class BookManipulation {
   bool cart;
-  bool favourite;
 
-  BookManipulation({this.cart, this.favourite});
+  BookManipulation({@required this.cart});
   Map<String, dynamic> toJson() {
-    return {"cart": cart, "favourite": favourite};
+    return {"cart": cart};
   }
 }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CardItem extends StatelessWidget {
-  const CardItem({
-    Key key,
-  }) : super(key: key);
-
+  CardItem(this.name, this.i);
+  final Icon i;
+  final String name;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,11 +19,7 @@ class CardItem extends StatelessWidget {
             children: <Widget>[
               IconButton(
                 onPressed: () {},
-                icon: Icon(
-                  Icons.access_time,
-                  size: 40.0,
-                  color: Colors.blue,
-                ),
+                icon: i
               ),
               SizedBox(width: 24.0),
               Column(
@@ -32,19 +27,19 @@ class CardItem extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text(
-                    "Joined Date",
+                    name,
                     style: TextStyle(
                       fontSize: 18.0,
                     ),
                   ),
                   SizedBox(height: 4.0),
-                  Text(
-                    "21 August 2020",
-                    style: TextStyle(
-                      color: Colors.grey[700],
-                      fontSize: 12.0,
-                    ),
-                  ),
+                  // Text(
+                  //   "21 August 2020",
+                  //   style: TextStyle(
+                  //     color: Colors.grey[700],
+                  //     fontSize: 12.0,
+                  //   ),
+                  // ),
                 ],
               ),
             ],

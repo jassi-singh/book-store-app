@@ -23,7 +23,7 @@ class _FavouriteBooksState extends State<FavouriteBooks> {
         ),
         body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, mainAxisSpacing: 2),
+              crossAxisCount: 2, mainAxisSpacing: 2,childAspectRatio: 0.6),
           itemCount: widget.isfavourite.length,
           itemBuilder: (context, index) {
             return Container(

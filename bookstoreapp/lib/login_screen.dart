@@ -62,7 +62,7 @@ class _LoginState extends State<Login> {
       final result = await service.createUser(user);
       print('something');
       if (!result.error) {
-        return 'Sign up Succesfull';
+        return null;
       } else {
         return 'An error occured';
       }
@@ -84,7 +84,6 @@ class _LoginState extends State<Login> {
     }
     return FlutterLogin(
       title: "Reader'Stop",
-      logo: 'assets/images/logo.png',
       onLogin: _authUser,
       onSignup: _signup,
       onSubmitAnimationCompleted: () {

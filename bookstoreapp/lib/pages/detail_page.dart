@@ -1,61 +1,25 @@
 import 'dart:convert';
+import 'package:bookstoreapp/utils/book_modify.dart';
+import 'package:bookstoreapp/utils/books_service.dart';
 import 'package:bookstoreapp/widgets/cartBooks.dart';
 import 'package:flutter/material.dart';
 import 'package:bookstoreapp/models/book.dart';
-
+import 'package:get_it/get_it.dart';
 
 class DetailPage extends StatefulWidget {
   final Book books;
   const DetailPage(this.books);
   @override
   _DetailPageState createState() => _DetailPageState();
-  Widget build(BuildContext context) {
-    return StreamBuilder(
-      initialData: bloc.allItems, // The bloc was already instantiated.
-      stream: bloc.getStream, // The stream we'll be listing to
-      builder: (context, snapshot) {
-        // snapshot contains the data of the bloc
-        return Center(child: Text("All items in shop have been taken"));
-      },
-    );
-  }
 }
+
+BooksService get service => GetIt.I<BooksService>();
 
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
+    int id = widget.books.id;
     return Scaffold(
-
-      // bottomSheet: BottomAppBar(
-      //   child: new Row(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: <Widget>[
-      //       Expanded(child: Column(
-      //         children: [
-      //           Row(
-      //             mainAxisAlignment: MainAxisAlignment.center,
-      //             crossAxisAlignment: CrossAxisAlignment.center,
-      //             children: <Widget>[
-      //               // RaisedButton(
-      //               //   onPressed: () {
-      //               //     //bloc.addToCart(shopList[i]);
-      //               //   },
-      //               //   child: const Text('Add To Cart',
-      //               //       style: TextStyle(fontSize: 20, color: Colors.black54)),
-      //               //   color: Colors.blue,
-      //               //   shape: RoundedRectangleBorder(
-      //               //       borderRadius: BorderRadius.circular(18.0),
-      //               //       side: BorderSide(color: Colors.lightBlue)
-      //               //   ),
-      //               // ),
-      //
-      //             ],
-      //           ),
-      //         ],
-      //       )),
-      //     ],
-      //   ),
-      // ),
       body: Stack(
         children: <Widget>[
           Positioned(
@@ -146,39 +110,49 @@ class _DetailPageState extends State<DetailPage> {
                   height: 15,
                 ),
                 Text(widget.books.details),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   children: <Widget>[
-                //     RaisedButton(
-                //       onPressed: () {
-                //         //bloc.addToCart(shopList[i]);
-                //       },
-                //       child: const Text('Add To Cart',
-                //           style: TextStyle(fontSize: 20, color: Colors.black54)),
-                //       color: Colors.blue,
-                //       shape: RoundedRectangleBorder(
-                //           borderRadius: BorderRadius.circular(18.0),
-                //           side: BorderSide(color: Colors.lightBlue)
-                //       ),
-                //     ),
-                //   ],
-                // ),
-
               ],
-
             ),
           )
-
         ],
-
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-
+        onPressed: () async {
+          final cart = BookManipulation(cart: true);
+          final result = await service.updateBook(widget.books.id, cart);
+          print(widget.books.id);
+          final text = result.error
+              ? (result.errormessage) ?? 'An error Occured'
+              : 'Add to cart';
+          showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                    content: Container(
+                      height: 130,
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.done,
+                            color: Colors.lightBlue,
+                            size: 100,
+                          ),
+                          Text("Added to Cart")
+                        ],
+                      ),
+                    ),
+                    actions: <Widget>[
+                      FlatButton(
+                        child: Text(""),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      )
+                    ],
+                  ));
         },
-
-        child: new Icon(Icons.add_shopping_cart, color: Colors.white, ),
+        child: new Icon(
+          Icons.add_shopping_cart,
+          color: Colors.white,
+        ),
         elevation: 4.0,
         backgroundColor: Colors.blue,
       ),
@@ -209,8 +183,6 @@ class _DetailPageState extends State<DetailPage> {
       //     ],
       //   ),
       // ),
-
-
     );
   }
 }

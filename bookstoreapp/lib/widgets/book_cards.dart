@@ -9,7 +9,7 @@ class BookCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 190,
+      width: 210,
       child: Card(
         elevation: 6,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -26,7 +26,7 @@ class BookCards extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Expanded(
-                  flex: 6,
+                  flex: 8,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -50,8 +50,10 @@ class BookCards extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 3,
-                  child: Column(
+                  flex: 5,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 2,horizontal: 10),
+                    child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -67,10 +69,11 @@ class BookCards extends StatelessWidget {
                         ),
                       ),
                     ],
+                    ),
                   ),
                 ),
                 Expanded(
-                  flex: 2,
+                  flex: 4,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(

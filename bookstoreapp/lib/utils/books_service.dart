@@ -33,18 +33,18 @@ class BooksService {
     }).catchError((_) =>
         APIResponse<List<Book>>(error: true, errormessage: 'An error occured'));
   }
-  Future<APIResponse<bool>> updateBook(String bookID,BookManipulation item) {
+  Future<APIResponse<bool>> updateBook(int bookID,BookManipulation item) {
     return http
-        .put('http://10.0.2.2:4000/api/users/'+bookID,
+        .put('http://10.0.2.2:4000/api/books/'+bookID.toString(),
             headers: {'Content-Type': 'application/json'},
             body: json.encode(item.toJson()))
         .then((data) {
       print(data.statusCode);
-      if (data.statusCode == 204) {
+      if (data.statusCode == 200) {
         return APIResponse<bool>(data: true);
       }
       return APIResponse<bool>(error: true, errormessage: 'An error occured');
-    }).catchError((_) => APIResponse<List<bool>>(
+    }).catchError((_) => APIResponse<bool>(
             error: true, errormessage: 'An error occured'));
   }
 }

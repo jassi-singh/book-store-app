@@ -47,7 +47,6 @@ class MainPage extends StatefulWidget {
 BooksService get service => GetIt.I<BooksService>();
 
 class _MainPageState extends State<MainPage> {
-
   APIResponse<List<Book>> _apiResponse;
   bool _isLoading = false;
   Future<List<Book>> futureBook;
@@ -125,7 +124,10 @@ class _MainPageState extends State<MainPage> {
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: "Search",
-                    icon: Icon(Icons.search, color: Colors.blue,),
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.blue,
+                    ),
                   ),
                 ),
               ),
@@ -238,7 +240,7 @@ class _MainPageState extends State<MainPage> {
                   );
                 }
                 return Container(
-                  height: deviceHeight / 3,
+                  height: deviceHeight / 2.3,
                   padding: EdgeInsets.only(left: 16, bottom: 16),
                   decoration: BoxDecoration(color: Colors.white),
                   child: ListView(
@@ -293,41 +295,40 @@ class _MainPageState extends State<MainPage> {
                 ],
               ),
             ),
-            Container(
-              height: deviceHeight / 3,
-              padding: EdgeInsets.only(left: 16, bottom: 16),
-              decoration: BoxDecoration(color: Colors.white),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  Row(
+            Builder(
+              builder: (context) {
+                if (_isLoading) {
+                  return CircularProgressIndicator();
+                }
+                if (_apiResponse.error) {
+                  return Center(
+                    child: Text(_apiResponse.errormessage.toString()),
+                  );
+                }
+                return Container(
+                  height: deviceHeight / 2.3,
+                  padding: EdgeInsets.only(left: 16, bottom: 16),
+                  decoration: BoxDecoration(color: Colors.white),
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
                     children: <Widget>[
-                      // FutureBuilder<List<Book>>(
-                      //   future: futureBook,
-                      //   builder: (context, snapshot) {
-                      //     if (!snapshot.hasData) {
-                      //       return CircularProgressIndicator();
-                      //     } else if (snapshot.hasError) {
-                      //       return Text("${snapshot.error}");
-                      //     }
-                      //
-                      //     // By default, show a loading spinner.
-                      //     return Text(snapshot.data[0].name);
-                      //   },
-                      // ),
-                      // ListView.builder(
-                      //   scrollDirection: Axis.horizontal,
-                      //   physics: NeverScrollableScrollPhysics(),
-                      //   itemBuilder: (context, index) => BookCards(
-                      //     books: books[index],
-                      //   ),
-                      //   shrinkWrap: true,
-                      //   itemCount: books.length,
-                      // )
+                      Row(
+                        children: <Widget>[
+                          ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) => BookCards(
+                              books: _apiResponse.data[index],
+                            ),
+                            shrinkWrap: true,
+                            itemCount: _apiResponse.data.length,
+                          )
+                        ],
+                      ),
                     ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
           ],
         ),

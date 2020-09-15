@@ -19,12 +19,9 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           children: <Widget>[
             StackContainer(),
-            ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) => CardItem(),
-              shrinkWrap: true,
-              itemCount: 4,
-            ),
+            CardItem("Reading Now",Icon(Icons.book)),          
+            CardItem("Bookmarks",Icon(Icons.bookmark)),          
+            CardItem("About",Icon(Icons.info)),          
             SizedBox(height: 10,),
             Row(
 
@@ -45,7 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Column(
                     children: <Widget>[
                       Text('Log Out',
-                          style: TextStyle(fontSize: 20, color: Colors.black54,fontWeight: FontWeight.bold),),
+                          style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.bold),),
                       //Icon(Icons.power_settings_new),
                     ],
                   ),
