@@ -43,7 +43,7 @@ class _LoginState extends State<Login> {
       if (!map.containsKey(data.name)) {
         return 'Username not exists';
       }
-
+      print(map[data.name]);
       if (map[data.name] !=
           md5.convert(utf8.encode(data.password)).toString()) {
         return 'Password does not match';
@@ -57,7 +57,7 @@ class _LoginState extends State<Login> {
     return Future.delayed(loginTime).then((_) async {
       final user = UserCreate(
           email: data.name,
-          password: md5.convert(utf8.encode(data.password)).toString());
+          password: data.password);
       print(user.password);
       final result = await service.createUser(user);
       print('something');
